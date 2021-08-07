@@ -43,6 +43,7 @@ dependencies {
     implementation(Dependencies.multidex)
     implementation(Dependencies.coil)
     implementation(Dependencies.Work.runtime)
+    implementation(Dependencies.Lifecycle.runtime)
 
 //    debugImplementation(Dependency.leakCanary)
 

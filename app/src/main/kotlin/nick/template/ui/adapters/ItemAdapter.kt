@@ -5,9 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import nick.template.data.Item
 import nick.template.databinding.ItemBinding
 
-class ItemAdapter : ListAdapter<Any, ItemViewHolder>(ItemDiffCallback) {
+class ItemAdapter : ListAdapter<Item, ItemViewHolder>(ItemDiffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         return LayoutInflater.from(parent.context)
             .let { inflater -> ItemBinding.inflate(inflater, parent, false) }
@@ -19,19 +20,19 @@ class ItemAdapter : ListAdapter<Any, ItemViewHolder>(ItemDiffCallback) {
     }
 }
 
-object ItemDiffCallback : DiffUtil.ItemCallback<Any>() {
-    override fun areItemsTheSame(oldItem: Any, newItem: Any): Boolean {
-        TODO("Not yet implemented")
+object ItemDiffCallback : DiffUtil.ItemCallback<Item>() {
+    override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
+        return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: Any, newItem: Any): Boolean {
-        TODO("Not yet implemented")
+    override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
+        return oldItem == newItem
     }
 }
 
 class ItemViewHolder(private val binding: ItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(any: Any) {
-
+    fun bind(item: Item) {
+        binding.text.text = item.name
     }
 }

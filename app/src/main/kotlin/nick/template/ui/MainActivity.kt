@@ -21,9 +21,10 @@ class MainActivity : AppCompatActivity(R.layout.main_activity) {
 
     private fun createNavGraph(navController: NavController) {
         navController.graph = navController.createGraph(
-            startDestination = "template/main"
+            startDestination = "user-scoped-di-fun/main"
         ) {
-            fragment<MainFragment>(route = "template/main")
+            fragment<LoginFragment>(route = "user-scoped-di-fun/main")
+            fragment<UserItemsFragment>(route = "user-scoped-di-fun/user_items")
         }
     }
 }
